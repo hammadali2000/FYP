@@ -1,0 +1,36 @@
+h2{
+    color: aqua;
+}
+
+.main-row{
+    text-align: center;
+}
+
+.image{
+    border-radius: 50%;
+    width: 40%;
+    height: 40%;
+}
+
+.form{
+    text-align: left;
+}
+
+.save-button{
+    background-color: #7b09b2;
+    border-color:  #7b09b2;
+    outline: #7b09b2;
+    border-radius: 5px;
+}
+
+.save-button:hover{
+    background-color: white;
+    color: #7b09b2;
+    border: 2px solid  #7b09b2;
+    border-radius: 5px;
+    
+}
+
+.save-button:active, .save-button:visited{
+    border-color: transparent !important;
+}

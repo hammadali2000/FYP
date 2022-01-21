@@ -1,0 +1,37 @@
+.heading{
+    text-align: center;
+    text-decoration: underline;
+    color: red;
+}
+
+.searchdiv{
+    width: 400px;
+    margin-left: 100px;
+}
+
+.searchbutton{
+    background-color: #7b09b2 !important;
+    color: white;
+}
+
+.searchbutton:hover{
+    background-color: white !important;
+    color: #7b09b2;
+    transition: .3s all;
+    outline: #7b09b2 solid 1px;
+}
+
+.graph-container{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 85px;
+    flex-wrap: wrap;
+    
+}
+
+.graph{
+    /* outline: #7b09b2 solid 1px; */
+    width: 400px !important;
+    margin-top: 50px !important;
+    box-shadow: 1px 1px 5px rgb(182, 182, 182);
+}

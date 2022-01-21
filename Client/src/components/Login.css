@@ -1,0 +1,100 @@
+/* .major{
+    background: linear-gradient(90deg, #ece7ec 10%, white 100%);
+} */
+.main-div{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.image-div{
+    width: 60%;
+    height: 400px;
+    margin-top: 100px;
+    
+}
+
+.login-div{
+    width: 40%;
+    /* margin: auto; */
+    padding: 10px;
+    text-align: left !important ;
+}
+
+.email-password-input{
+    border-radius: 0px;
+    box-shadow: 3px 3px 4px rgb(207, 207, 207);
+    height: 45px;
+}
+
+h3{
+    color: #7b09b2;
+    text-align: center;
+}
+
+.forget-password{
+    text-align: right;
+    color: #7b09b2;
+    width: 100%;
+    transition: .4s all;
+}
+
+.forget-password:hover{
+    text-align: right;
+    color: #7b09b2;
+    width: 100%;
+    cursor: pointer;
+    color: #a943d4;
+    text-decoration: underline;
+    transform: translateY(-1px);
+}
+
+.login-button{
+    background-color: #7b09b2;
+    width: 100%;
+    text-align: center;
+    border: none;
+    box-shadow: 2px 2px 4px rgb(207, 207, 207);
+}
+
+.login-button:hover{
+    background-color: #fff;
+    color: #7b09b2;
+    border: 1px solid #7b09b2;
+}
+
+.check{
+    color: #7b09b2;
+}
+
+.link{
+    color: #7b09b2;
+    transition: .4s all;
+}
+
+.link:hover{
+    cursor: pointer;
+    color: #a943d4;
+    text-decoration: underline;
+}
+
+
+@media only screen and (max-width: 600px) {
+    
+        .main-div{
+            height: 100vh;
+            width: 100%;
+        }
+
+        .image-div{
+           width: 100%;
+            
+        }
+
+        .login-div{
+           width: 100%;
+           margin-bottom: 800px;
+        }
+  }
