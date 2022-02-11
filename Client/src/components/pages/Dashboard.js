@@ -62,10 +62,10 @@ function Dashboard() {
         <Link to="#" className="menu-bars2">
           <FaIcons.FaBars onClick={showSidebar} />
         </Link>
-        <img src="images/logo.png" className="nav-image2" />
+        {/* <img src="images/logo.png" className="nav-image2" /> */}
         <div className="main-div">
           <div>
-            <h1>Welcome</h1>
+            {/* <h1>Welcome</h1> */}
           </div>
 
           <div>

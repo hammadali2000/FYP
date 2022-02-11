@@ -34,9 +34,11 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from '../SidebarData';
 import '../Dashboard.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {InputGroup, FormControl, Button, Form} from 'react-bootstrap';
+import {InputGroup, FormControl, Button, Form, Dropdown} from 'react-bootstrap';
 import { IconContext } from 'react-icons';
 import {ResponsiveContainer, LineChart, Line, XAxis, YAxis} from 'recharts';
+import Axios from "axios";
+import { useHistory } from "react-router";
 import "./Product.css";
 
 const pdata = [
@@ -75,6 +77,44 @@ const pdata = [
 
 function products() {
   const [sidebar, setSidebar] = useState(false);
+  const [loginStatus, setLoginStatus] = useState("");
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const history=useHistory();
+
+  Axios.defaults.withCredentials = true;
+   const getUser = () => {
+    const userStr = sessionStorage.getItem("user");
+    if (userStr) return JSON.parse(userStr);
+    else return null;
+  };
+   const removeUserSession = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+  };
+   const setUserSession = (token, user) => {
+    sessionStorage.setItem("token", token);
+    sessionStorage.setItem("user", JSON.stringify(user));
+  };
+  
+  const handleLogout = () => {
+    removeUserSession();
+    history.push("/login");
+  };
+
+  const login = () => {
+    Axios.post("http://localhost:3001/login", {
+      uname: username,
+      pass: password,
+    }).then((response) => {
+      if (response.data.message) {
+        setLoginStatus(response.data.message);
+      } else {
+        setLoginStatus(response.data[0].username);
+      }
+    });
+  };
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -95,11 +135,40 @@ function products() {
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
           <img src='images/logo.png' className="nav-image2"/>
+
+
+          <div className="main-div">
+          <div>
+            {/* <h1>Welcome</h1> */}
+          </div>
+
+          <div>
+            {/* <NavDropdown style={{color:'white'}} className="login-name" title={loginStatus}  id="basic-nav-dropdown">
+              <NavDropdown.Item className="item-name" href="#action/3.1"> My Profile </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item className="item-name" href="#action/3.4" onClick={handleLogout}>Logout</NavDropdown.Item>
+            </NavDropdown> */}
+
+              <Dropdown>
+                <Dropdown.Toggle className="login-name" id="dropdown-basic">
+                  {loginStatus}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item className="item-name" href="#/action-1">My Profile</Dropdown.Item>
+                  <Dropdown.Item className="item-name" onClick={handleLogout} href="#/action-2">Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+          </div>
+
+        </div>
+
+
         </div>
         <nav className={sidebar ? 'nav-menu2 active' : 'nav-menu2'}>
           <ul className='nav-menu-items2' onClick={showSidebar}>
             <li className='navbar-toggle2'>
-              <Link to='/Profile' className='menu-bars2'>
+              <Link to='#' className='menu-bars2'>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
